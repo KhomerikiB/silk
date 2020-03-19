@@ -23,13 +23,19 @@
         </tab>
         <tab name="Russian">
           <input
-            v-model="engForm.alt"
+            v-model="ruForm.alt"
             class="main-input"
             placeholder="Enter Title"
           />
         </tab>
       </tabs>
     </no-ssr>
+    <input
+      v-model="imageUrl.value"
+      class="main-input"
+      placeholder="Enter url"
+      style="margin-top:20px;"
+    />
     <div class="custom-upload [ relative ] ">
       <button class="primary">
         Upload Image
@@ -40,6 +46,9 @@
           @click="$event.target.value = ''"
         />
       </button>
+    </div>
+    <div v-if="imageName" class="image-box">
+      <img :src="staticUrl + imageName" />
     </div>
     <button class="primary" @click="saveForm">Save</button>
   </div>
@@ -60,9 +69,17 @@ export default {
       type: Object,
       required: true
     },
+    imageUrl: {
+      type: Object,
+      required: true
+    },
     showReset: {
       type: Boolean,
       default: false
+    },
+    imageName: {
+      type: String,
+      default: ''
     },
     onChange: {
       type: Function,
@@ -89,6 +106,19 @@ export default {
     bottom: 0;
     opacity: 0;
     z-index: 1;
+  }
+  .primary {
+    margin: 0;
+  }
+}
+.image-box {
+  margin-top: 20px;
+  width: 300px;
+  max-height: 400px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 </style>

@@ -14,6 +14,11 @@
           :eng-form="englishForm"
           :ru-form="russianForm"
           :on-change="readFile"
+          :image-name="imageName"
+          :image-url="imageUrl"
+          :show-reset="editState"
+          @restoreStore="restoreStoreObject"
+          @saveForm="submitForm"
         />
       </div>
     </div>
@@ -45,6 +50,9 @@ export default {
       russianForm: {
         alt: '',
         languageCode: 'ru'
+      },
+      imageUrl: {
+        value: ''
       }
     }
   },
@@ -62,9 +70,9 @@ export default {
   watch: {
     editObject(val) {
       if (this.editState) {
+        this.imageUrl.value = val.url
         this.imageName = val.image.name
         this.setAltTags(val.image.translations)
-        this.setEditableDataToForm(val.translations)
       }
     }
   },
@@ -78,7 +86,7 @@ export default {
   methods: {
     async editClick(id) {
       try {
-        await this.$store.dispatch('teamSlider/GET_BY_ID', id)
+        await this.$store.dispatch('partners/GET_BY_ID', id)
       } catch (e) {
         console.log(e)
       }
@@ -87,7 +95,7 @@ export default {
       const conf = confirm('Are you sure to delete a slide?')
       if (!conf) return false
       try {
-        await this.$store.dispatch('teamSlider/DELETE_SLIDE', id)
+        await this.$store.dispatch('partners/DELETE_SLIDE', id)
       } catch (e) {
         console.log(e)
       }
@@ -97,23 +105,6 @@ export default {
     },
     async submitForm() {
       const translations = [
-        {
-          languageCode: 'ka',
-          fullname: this.geoForm.fullname,
-          status: this.geoForm.status
-        },
-        {
-          languageCode: 'en',
-          fullname: this.englishForm.fullname,
-          status: this.englishForm.status
-        },
-        {
-          languageCode: 'ru',
-          fullname: this.russianForm.fullname,
-          status: this.russianForm.status
-        }
-      ]
-      const imageTranslations = [
         {
           languageCode: 'ka',
           alt: this.geoForm.alt
@@ -127,21 +118,21 @@ export default {
           alt: this.russianForm.alt
         }
       ]
-      const finalData = {
-        image: {
-          name: this.imageName,
-          translations: imageTranslations
-        },
-        translations
-      }
+      const finalData = {}
       if (this.editState) {
         const data = {
           id: this.editObject.id,
-          body: finalData
+          body: {
+            url: this.imageUrl.value,
+            image: {
+              name: this.imageName,
+              translations
+            }
+          }
         }
         try {
-          await this.$store.dispatch('teamSlider/UPDATE_SLIDER', data)
-          this.resetLocalState()
+          await this.$store.dispatch('partners/UPDATE_SLIDER', data)
+          console.log(data)
           this.restoreStoreObject()
         } catch (e) {
           console.log(e)
@@ -156,29 +147,27 @@ export default {
       }
     },
     restoreStoreObject() {
-      this.$store.commit('teamSlider/RESET_EDITABLE_ITEM')
+      this.$store.commit('partners/RESET_EDITABLE_ITEM')
       this.resetLocalState()
     },
     resetLocalState() {
+      this.upImage = ''
+      this.imageName = ''
       this.geoForm = {
-        fullname: '',
-        status: '',
         alt: '',
         languageCode: 'ka'
       }
       this.englishForm = {
-        fullname: '',
-        status: '',
         alt: '',
         languageCode: 'en'
       }
       this.russianForm = {
-        fullname: '',
-        status: '',
         alt: '',
         languageCode: 'ru'
       }
-      this.imageName = ''
+      this.imageUrl = {
+        value: ''
+      }
     },
     setAltTags(array) {
       array.forEach((item) => {
@@ -191,22 +180,9 @@ export default {
         }
       })
     },
-    setEditableDataToForm(array) {
-      array.forEach((item) => {
-        if (item.languageCode === 'ka') {
-          this.geoForm.status = item.status
-          this.geoForm.fullname = item.fullname
-        } else if (item.languageCode === 'ru') {
-          this.russianForm.status = item.status
-          this.russianForm.fullname = item.fullname
-        } else if (item.languageCode === 'en') {
-          this.englishForm.status = item.status
-          this.englishForm.fullname = item.fullname
-        }
-      })
-    },
     readFile(e) {
       this.upImage = e.target.files[0]
+      console.log(this.upImage)
     }
   }
 }

@@ -29,7 +29,7 @@ const actions = {
   },
   async GET_BY_ID({ commit }, id) {
     try {
-      const { data } = await this.$axios.get(`Team/${id}`)
+      const { data } = await this.$axios.get(`Partner/${id}`)
       commit('SET_EDITABLE_ITEM', data)
     } catch (e) {
       return e.response
@@ -45,7 +45,7 @@ const actions = {
   },
   async DELETE_SLIDE({ commit, state }, id) {
     try {
-      await this.$axios.delete(`Team/${id}`)
+      await this.$axios.delete(`Partner/${id}`)
       const newSlides = state.items.filter((item) => item.id !== id)
       commit('SET_DATA', newSlides)
     } catch (e) {
@@ -54,8 +54,8 @@ const actions = {
   },
   async UPDATE_SLIDER({ commit, dispatch }, data) {
     try {
-      await this.$axios.put(`Team/${data.id}`, data.body)
-      await dispatch('GET_TEAM_SLIDES')
+      await this.$axios.put(`Partner/${data.id}`, data.body)
+      await dispatch('GET_SLIDES')
     } catch (e) {
       return e.response
     }

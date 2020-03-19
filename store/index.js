@@ -11,6 +11,8 @@ import teamSlider from './modules/teamSlider'
 import press from './modules/press'
 import offer from './modules/offer'
 import partners from './modules/partners'
+import contact from './modules/contact'
+
 import image from './modules/image'
 const store = () => {
   return new Vuex.Store({
@@ -27,6 +29,7 @@ const store = () => {
       press,
       offer,
       partners,
+      contact,
       image
     }
   })
