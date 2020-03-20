@@ -180,9 +180,12 @@ export default {
         }
       })
     },
-    readFile(e) {
+    async readFile(e) {
       this.upImage = e.target.files[0]
-      console.log(this.upImage)
+      const formData = new FormData()
+      formData.append('File', this.upImage)
+      const result = await this.$store.dispatch('image/UPLOAD_IMAGE', formData)
+      this.imageName = result.data.name
     }
   }
 }
