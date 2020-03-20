@@ -11,8 +11,9 @@
     <!-- <TeamSlider /> -->
     <!-- <Press /> -->
     <!-- <Offer /> -->
-    <Partners />
+    <!-- <Partners /> -->
     <!-- <Contact /> -->
+    <Faq />
   </div>
 </template>
 
@@ -28,9 +29,9 @@
 // import TeamSlider from '@/components/admin/pages/teamSlider'
 // import Press from '@/components/admin/pages/press'
 // import Offer from '@/components/admin/pages/offer'
-import Partners from '@/components/admin/pages/partners'
+// import Partners from '@/components/admin/pages/partners'
 // import Contact from '@/components/admin/pages/contact'
-
+import Faq from '@/components/admin/pages/faq'
 export default {
   name: 'AdminRoot',
   components: {
@@ -45,8 +46,9 @@ export default {
     // TeamSlider,
     // Press,
     // Offer,
-    Partners
-    // Contact
+    // Partners,
+    // Contact,
+    Faq
   }
 }
 </script>

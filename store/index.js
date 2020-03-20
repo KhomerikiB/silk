@@ -12,7 +12,8 @@ import press from './modules/press'
 import offer from './modules/offer'
 import partners from './modules/partners'
 import contact from './modules/contact'
-
+import faq from './modules/faq'
+import faqCategory from './modules/faqCategory'
 import image from './modules/image'
 const store = () => {
   return new Vuex.Store({
@@ -30,6 +31,8 @@ const store = () => {
       offer,
       partners,
       contact,
+      faq,
+      faqCategory,
       image
     }
   })
