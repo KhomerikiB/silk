@@ -15,7 +15,8 @@
     <!-- <Contact /> -->
     <!-- <Faq /> -->
     <!-- <MultiSlider /> -->
-    <Video />
+    <!-- <Video /> -->
+    <Apartments />
   </div>
 </template>
 
@@ -35,7 +36,8 @@
 // import Contact from '@/components/admin/pages/contact'
 // import Faq from '@/components/admin/pages/faq'
 // import MultiSlider from '@/components/admin/pages/multiSlider'
-import Video from '@/components/admin/pages/video'
+// import Video from '@/components/admin/pages/video'
+import Apartments from '@/components/admin/pages/apartments'
 
 export default {
   name: 'AdminRoot',
@@ -55,7 +57,8 @@ export default {
     // Contact,
     // Faq,
     // MultiSlider,
-    Video
+    // Video,
+    Apartments
   }
 }
 </script>

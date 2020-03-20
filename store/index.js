@@ -15,6 +15,7 @@ import contact from './modules/contact'
 import faq from './modules/faq'
 import faqCategory from './modules/faqCategory'
 import multiSlider from './modules/multiSlider'
+import apartments from './modules/apartments'
 import video from './modules/video'
 import image from './modules/image'
 const store = () => {
@@ -37,6 +38,7 @@ const store = () => {
       faqCategory,
       multiSlider,
       video,
+      apartments,
       image
     }
   })
