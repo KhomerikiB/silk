@@ -15,6 +15,7 @@ import contact from './modules/contact'
 import faq from './modules/faq'
 import faqCategory from './modules/faqCategory'
 import multiSlider from './modules/multiSlider'
+import video from './modules/video'
 import image from './modules/image'
 const store = () => {
   return new Vuex.Store({
@@ -35,6 +36,7 @@ const store = () => {
       faq,
       faqCategory,
       multiSlider,
+      video,
       image
     }
   })

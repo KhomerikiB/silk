@@ -14,7 +14,8 @@
     <!-- <Partners /> -->
     <!-- <Contact /> -->
     <!-- <Faq /> -->
-    <MultiSlider />
+    <!-- <MultiSlider /> -->
+    <Video />
   </div>
 </template>
 
@@ -33,7 +34,9 @@
 // import Partners from '@/components/admin/pages/partners'
 // import Contact from '@/components/admin/pages/contact'
 // import Faq from '@/components/admin/pages/faq'
-import MultiSlider from '@/components/admin/pages/multiSlider'
+// import MultiSlider from '@/components/admin/pages/multiSlider'
+import Video from '@/components/admin/pages/video'
+
 export default {
   name: 'AdminRoot',
   components: {
@@ -51,7 +54,8 @@ export default {
     // Partners,
     // Contact,
     // Faq,
-    MultiSlider
+    // MultiSlider,
+    Video
   }
 }
 </script>
