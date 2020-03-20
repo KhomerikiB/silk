@@ -28,6 +28,9 @@ export default {
 .image-browser {
   width: max-content;
   position: relative;
+  .primary {
+    margin: 0;
+  }
   input {
     position: absolute;
     top: 0;

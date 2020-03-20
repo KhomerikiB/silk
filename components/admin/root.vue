@@ -13,7 +13,8 @@
     <!-- <Offer /> -->
     <!-- <Partners /> -->
     <!-- <Contact /> -->
-    <Faq />
+    <!-- <Faq /> -->
+    <MultiSlider />
   </div>
 </template>
 
@@ -31,7 +32,8 @@
 // import Offer from '@/components/admin/pages/offer'
 // import Partners from '@/components/admin/pages/partners'
 // import Contact from '@/components/admin/pages/contact'
-import Faq from '@/components/admin/pages/faq'
+// import Faq from '@/components/admin/pages/faq'
+import MultiSlider from '@/components/admin/pages/multiSlider'
 export default {
   name: 'AdminRoot',
   components: {
@@ -48,7 +50,8 @@ export default {
     // Offer,
     // Partners,
     // Contact,
-    Faq
+    // Faq,
+    MultiSlider
   }
 }
 </script>
