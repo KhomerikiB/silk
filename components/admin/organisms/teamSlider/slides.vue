@@ -1,32 +1,37 @@
 <template>
   <div class="slider-items-container [ inner-padding ] ">
-    <div
-      v-for="(slide, slideIndex) in slides"
-      :key="slideIndex"
-      class="slider-item"
-    >
-      <div class="slider-item__imagebox">
-        <img :src="`${slide.image.name}`" />
-      </div>
-      <div class="slider-item__body">
-        <div class="slider-item__content">
-          <p class="slider-item__content__key">Fullname:</p>
-          <p class="slider-item__content__title">
-            {{ slide.fullname }}
-          </p>
+    <no-ssr>
+      <draggable v-model="clonedSlides" draggable=".slider-item">
+        <div
+          v-for="(slide, slideIndex) in clonedSlides"
+          :key="slideIndex"
+          class="slider-item"
+        >
+          <span class="sort">sort</span>
+          <div class="slider-item__imagebox">
+            <img :src="`${slide.image.name}`" />
+          </div>
+          <div class="slider-item__body">
+            <div class="slider-item__content">
+              <p class="slider-item__content__key">Fullname:</p>
+              <p class="slider-item__content__title">
+                {{ slide.fullname }}
+              </p>
+            </div>
+            <div class="slider-item__content">
+              <p class="slider-item__content__key">Status:</p>
+              <p class="slider-item__content__title">
+                {{ slide.status }}
+              </p>
+            </div>
+          </div>
+          <div class="slider-item__nav">
+            <button class="edit" @click="editItem(slide.id)">Edit</button>
+            <button class="remove" @click="removeItem(slide.id)">Remove</button>
+          </div>
         </div>
-        <div class="slider-item__content">
-          <p class="slider-item__content__key">Status:</p>
-          <p class="slider-item__content__title">
-            {{ slide.status }}
-          </p>
-        </div>
-      </div>
-      <div class="slider-item__nav">
-        <button class="edit" @click="editItem(slide.id)">Edit</button>
-        <button class="remove" @click="removeItem(slide.id)">Remove</button>
-      </div>
-    </div>
+      </draggable>
+    </no-ssr>
   </div>
 </template>
 <script>
@@ -37,6 +42,25 @@ export default {
       type: Array,
       default: () => [],
       required: true
+    },
+    sortItems: {
+      type: Function,
+      required: true
+    }
+  },
+  data() {
+    return {
+      clonedSlides: []
+    }
+  },
+  watch: {
+    slides(value) {
+      this.clonedSlides = value
+    },
+    clonedSlides(items) {
+      if (items !== this.slides) {
+        this.sortItems(items)
+      }
     }
   },
   methods: {
@@ -59,6 +83,13 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     margin: 1.5rem;
     padding: 1.5rem;
+    position: relative;
+    .sort {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
     &__content {
       display: grid;
       grid-template-columns: 100px 1fr;

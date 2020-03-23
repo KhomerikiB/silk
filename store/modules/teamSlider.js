@@ -15,6 +15,9 @@ const mutations = {
   RESET_EDITABLE_ITEM(state) {
     state.editable = false
     state.editableItem = {}
+  },
+  UPDATE_LIST(state, list) {
+    state.items = list
   }
 }
 
@@ -56,6 +59,14 @@ const actions = {
     try {
       await this.$axios.put(`Team/${data.id}`, data.body)
       await dispatch('GET_TEAM_SLIDES')
+    } catch (e) {
+      return e.response
+    }
+  },
+  async UPDATE_SORT({ commit, dispatch }, idArray) {
+    console.log(idArray)
+    try {
+      await this.$axios.post('Team/UpdateOrdering', idArray)
     } catch (e) {
       return e.response
     }

@@ -8,7 +8,7 @@
     <!-- <ServiceSlides /> -->
     <!-- <ServiceStatic /> -->
     <!-- <TeamStatic /> -->
-    <!-- <TeamSlider /> -->
+    <TeamSlider />
     <!-- <Press /> -->
     <!-- <Offer /> -->
     <!-- <Partners /> -->
@@ -16,7 +16,7 @@
     <!-- <Faq /> -->
     <!-- <MultiSlider /> -->
     <!-- <Video /> -->
-    <Apartments />
+    <!-- <Apartments /> -->
   </div>
 </template>
 
@@ -29,7 +29,7 @@
 // import ServiceSlides from '@/components/admin/pages/serviceSlides'
 // import ServiceStatic from '@/components/admin/pages/serviceStatic'
 // import TeamStatic from '@/components/admin/pages/teamStatic'
-// import TeamSlider from '@/components/admin/pages/teamSlider'
+import TeamSlider from '@/components/admin/pages/teamSlider'
 // import Press from '@/components/admin/pages/press'
 // import Offer from '@/components/admin/pages/offer'
 // import Partners from '@/components/admin/pages/partners'
@@ -37,7 +37,7 @@
 // import Faq from '@/components/admin/pages/faq'
 // import MultiSlider from '@/components/admin/pages/multiSlider'
 // import Video from '@/components/admin/pages/video'
-import Apartments from '@/components/admin/pages/apartments'
+// import Apartments from '@/components/admin/pages/apartments'
 
 export default {
   name: 'AdminRoot',
@@ -50,7 +50,7 @@ export default {
     // ServiceSlides,
     // ServiceStatic,
     // TeamStatic,
-    // TeamSlider,
+    TeamSlider
     // Press,
     // Offer,
     // Partners,
@@ -58,7 +58,7 @@ export default {
     // Faq,
     // MultiSlider,
     // Video,
-    Apartments
+    // Apartments
   }
 }
 </script>

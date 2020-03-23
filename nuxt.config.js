@@ -43,6 +43,10 @@ export default {
       src: '~plugins/vue-cropperjs.js',
       ssr: false
     },
+    {
+      src: '~plugins/vuedraggable.js',
+      ssr: false
+    },
     { src: '~/components/mixins/staticUrl.js' }
   ],
   /*
