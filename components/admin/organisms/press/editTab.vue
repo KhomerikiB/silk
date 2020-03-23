@@ -1,9 +1,9 @@
 <template>
   <div class="[ inner-padding ]">
     <div class="[ flex-center flex-end ]">
-      <button v-if="showReset" class="edit " @click="restoreEditableItem">
+      <!-- <button v-if="showReset" class="edit " @click="restoreEditableItem">
         Add New Item
-      </button>
+      </button> -->
     </div>
     <no-ssr>
       <tabs :options="{ useUrlFragment: false }">
@@ -13,11 +13,10 @@
             class="main-input"
             placeholder="Enter Title"
           />
-          <textarea
-            v-model="geoForm.description"
-            row="4"
-            class="main-textarea"
-            placeholder="Enter Description"
+          <input
+            v-model="geoForm.componentTitle"
+            class="main-input"
+            placeholder="Enter Component Title"
           />
         </tab>
         <tab name="English">
@@ -26,11 +25,10 @@
             class="main-input"
             placeholder="Enter Title"
           />
-          <textarea
-            v-model="engForm.description"
-            row="4"
-            class="main-textarea"
-            placeholder="Enter Description"
+          <input
+            v-model="engForm.componentTitle"
+            class="main-input"
+            placeholder="Enter Component Title"
           />
         </tab>
         <tab name="Russian">
@@ -39,21 +37,20 @@
             class="main-input"
             placeholder="Enter Title"
           />
-          <textarea
-            v-model="ruForm.description"
-            row="4"
-            class="main-textarea"
-            placeholder="Enter Description"
+          <input
+            v-model="ruForm.componentTitle"
+            class="main-input"
+            placeholder="Enter Component Title"
           />
         </tab>
       </tabs>
+      <input
+        v-model="additional.slug"
+        class="main-input"
+        placeholder="Enter Slug"
+        style="margin-top:15px"
+      />
     </no-ssr>
-    <input
-      v-model="link.value"
-      class="main-input"
-      style="margin-top:20px"
-      placeholder="Enter Link"
-    />
     <button class="primary submit-btn" @click="saveForm">Save</button>
   </div>
 </template>
@@ -73,7 +70,7 @@ export default {
       type: Object,
       required: true
     },
-    link: {
+    additional: {
       type: Object,
       required: true
     },

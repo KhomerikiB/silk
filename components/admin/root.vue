@@ -14,9 +14,11 @@
     <!-- <Partners /> -->
     <!-- <Contact /> -->
     <!-- <Faq /> -->
-    <MultiSlider />
+    <!-- <MultiSlider /> -->
     <!-- <Video /> -->
     <!-- <Apartments /> -->
+    <!-- <Welcome /> -->
+    <Menu />
   </div>
 </template>
 
@@ -35,9 +37,10 @@
 // import Partners from '@/components/admin/pages/partners'
 // import Contact from '@/components/admin/pages/contact'
 // import Faq from '@/components/admin/pages/faq'
-import MultiSlider from '@/components/admin/pages/multiSlider'
+// import MultiSlider from '@/components/admin/pages/multiSlider'
 // import Video from '@/components/admin/pages/video'
 // import Apartments from '@/components/admin/pages/apartments'
+import Menu from '@/components/admin/pages/menu'
 
 export default {
   name: 'AdminRoot',
@@ -56,9 +59,10 @@ export default {
     // Partners,
     // Contact,
     // Faq,
-    MultiSlider
+    // MultiSlider
     // Video,
-    // Apartments
+    // Apartments,
+    Menu
   }
 }
 </script>

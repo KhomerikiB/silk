@@ -17,6 +17,7 @@ import faqCategory from './modules/faqCategory'
 import multiSlider from './modules/multiSlider'
 import apartments from './modules/apartments'
 import video from './modules/video'
+import menu from './modules/menu'
 import image from './modules/image'
 const store = () => {
   return new Vuex.Store({
@@ -39,6 +40,7 @@ const store = () => {
       multiSlider,
       video,
       apartments,
+      menu,
       image
     }
   })
