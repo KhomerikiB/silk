@@ -1,7 +1,7 @@
 <template>
   <div class="def-popup">
-    <!-- <Welcome /> -->
-    <BuildingSlider />
+    <Welcome />
+    <!-- <BuildingSlider /> -->
     <!-- <Completing /> -->
     <!-- <Neighbourhood /> -->
     <!-- <Advantage /> -->
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-// import Welcome from '@/components/admin/pages/welcome'
-import BuildingSlider from '@/components/admin/pages/buildingSlider'
+import Welcome from '@/components/admin/pages/welcome'
+// import BuildingSlider from '@/components/admin/pages/buildingSlider'
 // import Completing from '@/components/admin/pages/Completing'
 // import Neighbourhood from '@/components/admin/pages/neighbourhood'
 // import Advantage from '@/components/admin/pages/advantage'
@@ -42,8 +42,8 @@ import BuildingSlider from '@/components/admin/pages/buildingSlider'
 export default {
   name: 'AdminRoot',
   components: {
-    // Welcome
-    BuildingSlider
+    Welcome
+    // BuildingSlider
     // Completing,
     // Neighbourhood,
     // Advantage,

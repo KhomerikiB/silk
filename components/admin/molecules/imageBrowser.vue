@@ -29,7 +29,7 @@ export default {
   width: max-content;
   position: relative;
   .primary {
-    margin: 0;
+    margin: 15px 0;
   }
   input {
     position: absolute;

@@ -52,6 +52,13 @@ const actions = {
     } catch (e) {
       return e.response
     }
+  },
+  async UPDATE_SORT({ commit, dispatch }, idArray) {
+    try {
+      await this.$axios.post('CoverSlider/UpdateOrdering', idArray)
+    } catch (e) {
+      return e.response
+    }
   }
 }
 

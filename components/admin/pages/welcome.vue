@@ -4,6 +4,7 @@
       <div class=" [ scrollable inner-shadow ] ">
         <Slides
           :slides="getSlides"
+          :sort-items="sortItems"
           @editClick="editClick"
           @removeClick="removeClick"
         />
@@ -46,6 +47,17 @@ export default {
         const conf = confirm('Are you sure to delete a slide?')
         if (!conf) return false
         await this.$store.dispatch('welcome/REMOVE_SLIDER', id)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async sortItems(value) {
+      const sortIds = []
+      value.map((item) => {
+        sortIds.push(item.id)
+      })
+      try {
+        await this.$store.dispatch('welcome/UPDATE_SORT', sortIds)
       } catch (e) {
         console.log(e)
       }
