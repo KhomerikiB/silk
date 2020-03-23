@@ -64,7 +64,6 @@ const actions = {
     }
   },
   async UPDATE_SORT({ commit, dispatch }, idArray) {
-    console.log(idArray)
     try {
       await this.$axios.post('Team/UpdateOrdering', idArray)
     } catch (e) {

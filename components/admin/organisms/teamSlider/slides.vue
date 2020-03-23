@@ -7,7 +7,7 @@
           :key="slideIndex"
           class="slider-item"
         >
-          <span class="sort">sort</span>
+          <span class="sort-btn">sort</span>
           <div class="slider-item__imagebox">
             <img :src="`${slide.image.name}`" />
           </div>
@@ -84,12 +84,6 @@ export default {
     margin: 1.5rem;
     padding: 1.5rem;
     position: relative;
-    .sort {
-      position: absolute;
-      top: 0;
-      right: 0;
-      cursor: pointer;
-    }
     &__content {
       display: grid;
       grid-template-columns: 100px 1fr;
