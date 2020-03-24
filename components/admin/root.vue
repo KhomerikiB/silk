@@ -17,8 +17,9 @@
     <!-- <MultiSlider /> -->
     <!-- <Video /> -->
     <!-- <Apartments /> -->
+    <ApartmentPdf />
     <!-- <Welcome /> -->
-    <Menu />
+    <!-- <Menu /> -->
   </div>
 </template>
 
@@ -40,7 +41,9 @@
 // import MultiSlider from '@/components/admin/pages/multiSlider'
 // import Video from '@/components/admin/pages/video'
 // import Apartments from '@/components/admin/pages/apartments'
-import Menu from '@/components/admin/pages/menu'
+import ApartmentPdf from '@/components/admin/pages/apartmentPdf'
+
+// import Menu from '@/components/admin/pages/menu'
 
 export default {
   name: 'AdminRoot',
@@ -48,7 +51,7 @@ export default {
     // Welcome
     // BuildingSlider
     // Completing,
-    // Neighbourhood,
+    // Neighbourhood
     // Advantage,
     // ServiceSlides,
     // ServiceStatic,
@@ -62,7 +65,8 @@ export default {
     // MultiSlider
     // Video,
     // Apartments,
-    Menu
+    ApartmentPdf
+    // Menu
   }
 }
 </script>

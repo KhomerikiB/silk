@@ -16,9 +16,13 @@ import faq from './modules/faq'
 import faqCategory from './modules/faqCategory'
 import multiSlider from './modules/multiSlider'
 import apartments from './modules/apartments'
+import apartmentPdf from './modules/apartmentPdf'
+
 import video from './modules/video'
 import menu from './modules/menu'
 import image from './modules/image'
+import file from './modules/file'
+
 const store = () => {
   return new Vuex.Store({
     modules: {
@@ -40,8 +44,10 @@ const store = () => {
       multiSlider,
       video,
       apartments,
+      apartmentPdf,
       menu,
-      image
+      image,
+      file
     }
   })
 }
