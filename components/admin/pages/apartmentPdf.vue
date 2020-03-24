@@ -1,5 +1,8 @@
 <template>
   <div class="[ flex-center ]">
+    <no-ssr>
+      <response-popup :class="success || error ? 'show' : ''" :error="error" />
+    </no-ssr>
     <Form
       :geo-form="geoForm"
       :eng-form="engForm"
@@ -20,6 +23,8 @@ export default {
   },
   data() {
     return {
+      error: false,
+      success: false,
       additional: {
         filePath: ''
       },
@@ -67,7 +72,15 @@ export default {
       const translations = [this.geoForm, this.engForm, this.ruForm]
       try {
         await this.$store.dispatch('apartmentPdf/UPDATE_DATA', translations)
+        this.success = true
+        setTimeout(() => {
+          this.success = false
+        }, 2000)
       } catch (e) {
+        this.error = true
+        setTimeout(() => {
+          this.error = false
+        }, 2000)
         console.log(e)
       }
     },
@@ -75,9 +88,22 @@ export default {
       this.upImage = e.target.files[0]
       const formData = new FormData()
       formData.append('File', this.upImage)
-      const result = await this.$store.dispatch('file/UPLOAD_FILE', formData)
-      await this.$store.dispatch('apartmentPdf/UPDATE_PDF', result.data.name)
-      this.additional.filePath = result.data.fullPath
+      try {
+        const result = await this.$store.dispatch('file/UPLOAD_FILE', formData)
+        await this.$store.dispatch('apartmentPdf/UPDATE_PDF', result.data.name)
+        this.additional.filePath = result.data.fullPath
+
+        this.success = true
+
+        setTimeout(() => {
+          this.success = false
+        }, 2000)
+      } catch (e) {
+        this.error = true
+        setTimeout(() => {
+          this.error = false
+        }, 2000)
+      }
     }
   }
 }

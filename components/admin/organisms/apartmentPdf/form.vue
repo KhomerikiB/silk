@@ -26,12 +26,12 @@
       </tabs>
     </no-ssr>
     <button class="primary" @click="editForm">Edit Form</button>
-    <div class="pdf-wrapper">
+    <!-- <div class="pdf-wrapper">
       <span>Current Pdf File </span>
       <a :href="additional.filePath" class="pdf-link">{{
         additional.filePath
       }}</a>
-    </div>
+    </div> -->
     <!-- <input
       v-model="additional.filePath"
       type="text"
@@ -86,6 +86,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .custom-upload {
+  margin-top: 15px;
   &__input {
     position: absolute;
     top: 0;

@@ -1,6 +1,6 @@
 <template>
   <div class="def-popup">
-    <!-- <Welcome /> -->
+    <Welcome />
     <!-- <BuildingSlider /> -->
     <!-- <Completing /> -->
     <!-- <Neighbourhood /> -->
@@ -17,14 +17,14 @@
     <!-- <MultiSlider /> -->
     <!-- <Video /> -->
     <!-- <Apartments /> -->
-    <ApartmentPdf />
+    <!-- <ApartmentPdf /> -->
     <!-- <Welcome /> -->
     <!-- <Menu /> -->
   </div>
 </template>
 
 <script>
-// import Welcome from '@/components/admin/pages/welcome'
+import Welcome from '@/components/admin/pages/welcome'
 // import BuildingSlider from '@/components/admin/pages/buildingSlider'
 // import Completing from '@/components/admin/pages/Completing'
 // import Neighbourhood from '@/components/admin/pages/neighbourhood'
@@ -41,14 +41,14 @@
 // import MultiSlider from '@/components/admin/pages/multiSlider'
 // import Video from '@/components/admin/pages/video'
 // import Apartments from '@/components/admin/pages/apartments'
-import ApartmentPdf from '@/components/admin/pages/apartmentPdf'
+// import ApartmentPdf from '@/components/admin/pages/apartmentPdf'
 
 // import Menu from '@/components/admin/pages/menu'
 
 export default {
   name: 'AdminRoot',
   components: {
-    // Welcome
+    Welcome
     // BuildingSlider
     // Completing,
     // Neighbourhood
@@ -65,7 +65,7 @@ export default {
     // MultiSlider
     // Video,
     // Apartments,
-    ApartmentPdf
+    // ApartmentPdf
     // Menu
   }
 }

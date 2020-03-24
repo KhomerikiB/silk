@@ -47,6 +47,10 @@ export default {
       src: '~plugins/vuedraggable.js',
       ssr: false
     },
+    {
+      src: '~plugins/responsePopup.js',
+      ssr: false
+    },
     { src: '~/components/mixins/staticUrl.js' }
   ],
   /*
