@@ -14,7 +14,7 @@ const actions = {
       const { data } = await this.$axios.get('Team/GetStaticTeam')
       commit('SET_DATA', data.translations)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_DATA({ commit, dispatch }, data) {
@@ -22,7 +22,7 @@ const actions = {
       console.log(data)
       await this.$axios.post('Team/UpdateStaticTeam', { translations: data })
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

@@ -112,7 +112,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('teamSlider/DELETE_SLIDE', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -120,6 +128,13 @@ export default {
       this.imageName = url
     },
     async submitForm() {
+      if (!this.imageName) {
+        this.$notify({
+          type: 'warn',
+          text: 'Please update,crop the image'
+        })
+        return false
+      }
       const translations = [
         {
           languageCode: 'ka',
@@ -165,16 +180,33 @@ export default {
         }
         try {
           await this.$store.dispatch('teamSlider/UPDATE_SLIDER', data)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.resetLocalState()
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       } else {
         try {
           await this.$store.dispatch('teamSlider/ADD_SLIDER', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
+
           this.resetLocalState()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       }

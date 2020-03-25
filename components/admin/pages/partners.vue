@@ -96,7 +96,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('partners/DELETE_SLIDE', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -104,6 +112,13 @@ export default {
       this.imageName = url
     },
     async submitForm() {
+      if (!this.imageName) {
+        this.$notify({
+          type: 'warn',
+          text: 'Please upload the image'
+        })
+        return false
+      }
       const translations = [
         {
           languageCode: 'ka',
@@ -118,30 +133,46 @@ export default {
           alt: this.russianForm.alt
         }
       ]
-      const finalData = {}
+      const finalData = {
+        url: this.imageUrl.value,
+        image: {
+          name: this.imageName,
+          translations
+        }
+      }
       if (this.editState) {
         const data = {
           id: this.editObject.id,
-          body: {
-            url: this.imageUrl.value,
-            image: {
-              name: this.imageName,
-              translations
-            }
-          }
+          body: finalData
         }
         try {
           await this.$store.dispatch('partners/UPDATE_SLIDER', data)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           console.log(data)
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       } else {
         try {
-          await this.$store.dispatch('teamSlider/ADD_SLIDER', finalData)
+          await this.$store.dispatch('partners/ADD_SLIDER', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.resetLocalState()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       }

@@ -62,7 +62,15 @@ export default {
       const translations = [this.geoForm, this.engForm, this.ruForm]
       try {
         await this.$store.dispatch('teamStatic/UPDATE_DATA', translations)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully updated an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     }

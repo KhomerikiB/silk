@@ -4,7 +4,7 @@
       <div class=" [ scrollable inner-shadow ] ">
         <List :lists="getList" @editClick="editClick" />
       </div>
-      <div class=" [ scrollable inner-shadow ] ">
+      <div v-if="editState" class=" [ scrollable inner-shadow ] ">
         <ListEdit :form-data="form" @submitForm="submitForm" />
       </div>
     </div>
@@ -95,9 +95,17 @@ export default {
       }
       try {
         await this.$store.dispatch('completing/UPDATE_ITEM', finalData)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully updated an item'
+        })
         this.restoreStoreObject()
         this.resetLocalState()
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },

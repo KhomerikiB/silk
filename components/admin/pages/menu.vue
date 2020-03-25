@@ -26,7 +26,7 @@
 
 <script>
 import FormTable from '@/components/admin/organisms/menu/list'
-import EditTab from '@/components/admin/organisms/press/editTab'
+import EditTab from '@/components/admin/organisms/menu/editTab'
 export default {
   name: 'Advantage',
   components: {
@@ -105,7 +105,10 @@ export default {
       try {
         await this.$store.dispatch('press/REMOVE_ITEM', id)
       } catch (e) {
-        console.log(e)
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     },
     async saveForm() {
@@ -121,9 +124,16 @@ export default {
         }
         try {
           await this.$store.dispatch('menu/UPDATE_ITEM', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       }
     },

@@ -44,11 +44,11 @@ export default {
       ssr: false
     },
     {
-      src: '~plugins/vuedraggable.js',
+      src: '~plugins/vue-notification.js',
       ssr: false
     },
     {
-      src: '~plugins/responsePopup.js',
+      src: '~plugins/vuedraggable.js',
       ssr: false
     },
     { src: '~/components/mixins/staticUrl.js' }

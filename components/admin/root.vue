@@ -1,6 +1,9 @@
 <template>
   <div class="def-popup">
-    <Welcome />
+    <no-ssr>
+      <notifications />
+    </no-ssr>
+    <!-- <Welcome /> -->
     <!-- <BuildingSlider /> -->
     <!-- <Completing /> -->
     <!-- <Neighbourhood /> -->
@@ -19,12 +22,12 @@
     <!-- <Apartments /> -->
     <!-- <ApartmentPdf /> -->
     <!-- <Welcome /> -->
-    <!-- <Menu /> -->
+    <Menu />
   </div>
 </template>
 
 <script>
-import Welcome from '@/components/admin/pages/welcome'
+// import Welcome from '@/components/admin/pages/welcome'
 // import BuildingSlider from '@/components/admin/pages/buildingSlider'
 // import Completing from '@/components/admin/pages/Completing'
 // import Neighbourhood from '@/components/admin/pages/neighbourhood'
@@ -43,30 +46,30 @@ import Welcome from '@/components/admin/pages/welcome'
 // import Apartments from '@/components/admin/pages/apartments'
 // import ApartmentPdf from '@/components/admin/pages/apartmentPdf'
 
-// import Menu from '@/components/admin/pages/menu'
+import Menu from '@/components/admin/pages/menu'
 
 export default {
   name: 'AdminRoot',
   components: {
-    Welcome
+    // Welcome
     // BuildingSlider
-    // Completing,
+    // Completing
     // Neighbourhood
-    // Advantage,
-    // ServiceSlides,
-    // ServiceStatic,
-    // TeamStatic,
-    // TeamSlider,
-    // Press,
-    // Offer,
-    // Partners,
-    // Contact,
-    // Faq,
+    // Advantage
+    // ServiceSlides
+    // ServiceStatic
+    // TeamStatic
+    // TeamSlider
+    // Press
+    // Offer
+    // Partners
+    // Contact
+    // Faq
     // MultiSlider
-    // Video,
-    // Apartments,
+    // Video
+    // Apartments
     // ApartmentPdf
-    // Menu
+    Menu
   }
 }
 </script>

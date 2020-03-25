@@ -15,15 +15,14 @@ const actions = {
 
       commit('SET_DATA', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_DATA({ commit, dispatch }, data) {
     try {
-      console.log('data', data)
       await this.$axios.post('Contact', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

@@ -24,7 +24,7 @@ const actions = {
       const { data } = await this.$axios.get('Apartment/GetAll')
       commit('SET_DATA', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async GET_BY_ID({ commit }, id) {
@@ -32,7 +32,7 @@ const actions = {
       const { data } = await this.$axios.get(`Apartment/GetById/${id}`)
       commit('SET_EDITABLE_ITEM', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async ADD_SLIDER({ commit, dispatch }, data) {
@@ -40,7 +40,7 @@ const actions = {
       await this.$axios.post('Apartment', data)
       await dispatch('GET_SLIDES')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async DELETE_SLIDE({ commit, state }, id) {
@@ -49,7 +49,7 @@ const actions = {
       const newSlides = state.items.filter((item) => item.id !== id)
       commit('SET_DATA', newSlides)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_SLIDER({ commit, dispatch }, data) {
@@ -58,7 +58,7 @@ const actions = {
       await this.$axios.put(`Apartment/${data.id}`, data.body)
       await dispatch('GET_SLIDES')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

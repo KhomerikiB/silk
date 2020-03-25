@@ -76,7 +76,6 @@ export default {
 <style lang="scss" scoped>
 .slider-items-container {
   background-color: #fff;
-  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.25);
   .slider-item {
     display: grid;
     grid-template-columns: auto 1fr;

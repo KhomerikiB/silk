@@ -29,7 +29,7 @@ const actions = {
       const { data } = await this.$axios.get('Completing')
       commit('SET_DATA', data.data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async GET_BY_ID({ commit }, key) {
@@ -38,7 +38,7 @@ const actions = {
       commit('SET_EDITABLE_ITEM', data.data)
       commit('UPDATE_KEY', key)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_ITEM({ commit, dispatch }, data) {
@@ -46,7 +46,7 @@ const actions = {
       await this.$axios.put(`Completing/${data.key}`, data.body)
       await dispatch('GET_COMPLETING_ITEMS')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

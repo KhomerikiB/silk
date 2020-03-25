@@ -1,8 +1,5 @@
 <template>
   <div class="[ flex-center ]">
-    <no-ssr>
-      <response-popup :class="success || error ? 'show' : ''" :error="error" />
-    </no-ssr>
     <Form
       :geo-form="geoForm"
       :eng-form="engForm"
@@ -11,6 +8,9 @@
       :on-change="readFile"
       @editForm="editForm"
     />
+    <no-ssr>
+      <notifications group="alert" />
+    </no-ssr>
   </div>
 </template>
 
@@ -23,8 +23,6 @@ export default {
   },
   data() {
     return {
-      error: false,
-      success: false,
       additional: {
         filePath: ''
       },
@@ -72,15 +70,17 @@ export default {
       const translations = [this.geoForm, this.engForm, this.ruForm]
       try {
         await this.$store.dispatch('apartmentPdf/UPDATE_DATA', translations)
-        this.success = true
-        setTimeout(() => {
-          this.success = false
-        }, 2000)
+        this.$notify({
+          group: 'alert',
+          type: 'success',
+          text: 'You have successfully edited a item'
+        })
       } catch (e) {
-        this.error = true
-        setTimeout(() => {
-          this.error = false
-        }, 2000)
+        this.$notify({
+          group: 'alert',
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -92,17 +92,17 @@ export default {
         const result = await this.$store.dispatch('file/UPLOAD_FILE', formData)
         await this.$store.dispatch('apartmentPdf/UPDATE_PDF', result.data.name)
         this.additional.filePath = result.data.fullPath
-
-        this.success = true
-
-        setTimeout(() => {
-          this.success = false
-        }, 2000)
+        this.$notify({
+          group: 'alert',
+          type: 'success',
+          text: 'You have successfully upload a pdf'
+        })
       } catch (e) {
-        this.error = true
-        setTimeout(() => {
-          this.error = false
-        }, 2000)
+        this.$notify({
+          group: 'alert',
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     }
   }

@@ -103,7 +103,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('press/REMOVE_ITEM', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully removed an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -120,15 +128,31 @@ export default {
         }
         try {
           await this.$store.dispatch('press/UPDATE_ITEM', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       } else {
         try {
           await this.$store.dispatch('press/ADD_ITEM', data)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.restoreLocaleState()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       }
@@ -138,7 +162,7 @@ export default {
       this.restoreLocaleState()
     },
     restoreLocaleState() {
-      this.link.vaue = ''
+      this.link.value = ''
       this.geoForm = {
         languageCode: 'ka',
         title: '',

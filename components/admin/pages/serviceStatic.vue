@@ -86,7 +86,15 @@ export default {
       }
       try {
         await this.$store.dispatch('serviceStatic/UPDATE_SLIDER', finalData)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully updated an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },

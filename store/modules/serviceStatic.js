@@ -14,14 +14,14 @@ const actions = {
       const { data } = await this.$axios.get('service/GetStaticService')
       commit('SET_DATA', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_SLIDER({ commit, dispatch }, data) {
     try {
       await this.$axios.post(`Service/UpdateStaticService`, data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

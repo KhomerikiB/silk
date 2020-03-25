@@ -14,7 +14,7 @@ const actions = {
       const { data } = await this.$axios.get('Apartment/GetPdfDisplayText')
       commit('SET_DATA', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_DATA({ commit, dispatch }, data) {
@@ -23,7 +23,7 @@ const actions = {
         translations: data
       })
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_PDF({ commit }, fileName) {
@@ -32,7 +32,7 @@ const actions = {
         name: fileName
       })
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

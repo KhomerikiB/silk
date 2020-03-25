@@ -24,7 +24,7 @@ const actions = {
       const { data } = await this.$axios.get('BuildingSlider')
       commit('SET_DATA', data.data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async GET_BY_ID({ commit }, id) {
@@ -33,7 +33,7 @@ const actions = {
       console.log(data)
       commit('SET_EDITABLE_ITEM', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async ADD_SLIDER({ commit, dispatch }, data) {
@@ -41,7 +41,7 @@ const actions = {
       await this.$axios.post('BuildingSlider', data)
       await dispatch('GET_BUILDING_SLIDES')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async DELETE_SLIDE({ commit, state }, id) {

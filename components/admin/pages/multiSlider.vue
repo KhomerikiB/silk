@@ -134,8 +134,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('multiSlider/DELETE_SLIDE', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
-        console.log(e)
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     },
     async sortItems(value) {
@@ -168,16 +175,30 @@ export default {
         data.id = this.editObject.id
         try {
           await this.$store.dispatch('multiSlider/UPDATE_SLIDER', data)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       } else {
         try {
           await this.$store.dispatch('multiSlider/ADD_SLIDER', data.body)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.resetLocalState()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       }
     },

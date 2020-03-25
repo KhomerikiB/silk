@@ -75,7 +75,6 @@ export default {
       this.additional.published = val.published
       this.additional.categoryId = val.categoryId
       if (this.editState) {
-        console.log('val', val)
         this.setTranslations(val.translations)
       }
     }
@@ -97,6 +96,10 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('faq/REMOVE_ITEM', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
         console.log(e)
       }
@@ -130,16 +133,30 @@ export default {
         finalData.id = this.editObject.id
         try {
           await this.$store.dispatch('faq/UPDATE_ITEM', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       } else {
         try {
           await this.$store.dispatch('faq/ADD_ITEM', finalData.body)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.resetLocalState()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       }
     },

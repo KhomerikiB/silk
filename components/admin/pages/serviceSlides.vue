@@ -103,7 +103,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('serviceSlides/REMOVE_ITEM', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully removed an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -116,15 +124,31 @@ export default {
         }
         try {
           await this.$store.dispatch('serviceSlides/UPDATE_ITEM', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'you have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       } else {
         try {
           await this.$store.dispatch('serviceSlides/ADD_ITEM', translations)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       }

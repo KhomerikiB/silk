@@ -92,9 +92,7 @@ export default {
   async created() {
     try {
       await this.$store.dispatch('contact/GET_DATA')
-    } catch (e) {
-      console.log(e)
-    }
+    } catch (e) {}
   },
   methods: {
     async editForm() {
@@ -113,8 +111,15 @@ export default {
       }
       try {
         await this.$store.dispatch('contact/UPDATE_DATA', finalData)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully updated contact form'
+        })
       } catch (e) {
-        console.log(e)
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     }
   }

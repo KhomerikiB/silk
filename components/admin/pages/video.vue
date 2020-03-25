@@ -114,11 +114,17 @@ export default {
           }
         ]
       }
-      console.log(finalData.image.translations)
       try {
         await this.$store.dispatch('video/UPDATE_DATA', finalData)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully updated a form'
+        })
       } catch (e) {
-        console.log(e)
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     },
     imageSrc(url) {

@@ -14,7 +14,7 @@ const actions = {
       const { data } = await this.$axios.get('Neighbourhood/All')
       commit('SET_DATA', data.data.translations)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_DATA({ commit, dispatch }, data) {
@@ -22,7 +22,7 @@ const actions = {
       console.log('data', data)
       await this.$axios.post('Neighbourhood', { translations: data })
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

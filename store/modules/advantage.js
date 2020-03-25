@@ -24,7 +24,7 @@ const actions = {
       const { data } = await this.$axios.get('Advantage')
       commit('SET_DATA', data.data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async GET_BY_ID({ commit }, id) {
@@ -32,7 +32,7 @@ const actions = {
       const { data } = await this.$axios.get(`Advantage/${id}`)
       commit('SET_EDITABLE_ITEM', data)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async ADD_ITEM({ commit, dispatch }, translations) {
@@ -40,7 +40,7 @@ const actions = {
       await this.$axios.post(`Advantage`, { translations })
       await dispatch('GET_DATA')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_ITEM({ commit, dispatch }, data) {
@@ -50,7 +50,7 @@ const actions = {
       })
       await dispatch('GET_DATA')
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async REMOVE_ITEM({ commit, state }, id) {
@@ -59,7 +59,7 @@ const actions = {
       const newData = state.items.filter((item) => item.id !== id)
       commit('SET_DATA', newData)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

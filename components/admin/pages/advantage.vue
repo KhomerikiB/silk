@@ -53,8 +53,6 @@ export default {
     editObject(val) {
       if (this.editState) {
         this.setEditableDataToForm(val.translations)
-      } else {
-        console.log('reset Form')
       }
     }
   },
@@ -66,8 +64,8 @@ export default {
     }
   },
   methods: {
-    editItem(id) {
-      this.$store.dispatch('advantage/GET_BY_ID', id)
+    async editItem(id) {
+      await this.$store.dispatch('advantage/GET_BY_ID', id)
     },
     setEditableDataToForm(translations) {
       translations.forEach((item) => {
@@ -85,7 +83,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('advantage/REMOVE_ITEM', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
         console.log(e)
       }
     },
@@ -111,14 +117,30 @@ export default {
         }
         try {
           await this.$store.dispatch('advantage/UPDATE_ITEM', finalData)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       } else {
         try {
           await this.$store.dispatch('advantage/ADD_ITEM', translations)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
         } catch (e) {
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
           console.log(e)
         }
       }

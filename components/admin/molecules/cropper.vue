@@ -74,11 +74,8 @@ export default {
       try {
         const result = await this.$store.dispatch('image/CROP_IMAGE', formData)
         this.cropped = result.data.name
-        console.log('this cropped', this.cropped)
         this.onCrop(this.cropped)
-      } catch (e) {
-        console.log(e)
-      }
+      } catch (e) {}
     },
     readFile(e) {
       this.upImage = e.target.files[0]

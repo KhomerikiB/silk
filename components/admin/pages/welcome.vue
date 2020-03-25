@@ -47,7 +47,15 @@ export default {
         const conf = confirm('Are you sure to delete a slide?')
         if (!conf) return false
         await this.$store.dispatch('welcome/REMOVE_SLIDER', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully removed an item'
+        })
       } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'something went wrong'
+        })
         console.log(e)
       }
     },

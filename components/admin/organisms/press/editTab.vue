@@ -14,9 +14,9 @@
             placeholder="Enter Title"
           />
           <input
-            v-model="geoForm.componentTitle"
+            v-model="geoForm.description"
             class="main-input"
-            placeholder="Enter Component Title"
+            placeholder="Enter Description"
           />
         </tab>
         <tab name="English">
@@ -26,9 +26,9 @@
             placeholder="Enter Title"
           />
           <input
-            v-model="engForm.componentTitle"
+            v-model="engForm.description"
             class="main-input"
-            placeholder="Enter Component Title"
+            placeholder="Enter Description"
           />
         </tab>
         <tab name="Russian">
@@ -38,16 +38,16 @@
             placeholder="Enter Title"
           />
           <input
-            v-model="ruForm.componentTitle"
+            v-model="ruForm.description"
             class="main-input"
-            placeholder="Enter Component Title"
+            placeholder="Enter Description"
           />
         </tab>
       </tabs>
       <input
-        v-model="additional.slug"
+        v-model="link.value"
         class="main-input"
-        placeholder="Enter Slug"
+        placeholder="Enter Link"
         style="margin-top:15px"
       />
     </no-ssr>
@@ -70,7 +70,7 @@ export default {
       type: Object,
       required: true
     },
-    additional: {
+    link: {
       type: Object,
       required: true
     },

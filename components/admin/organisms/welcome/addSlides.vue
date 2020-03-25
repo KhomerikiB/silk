@@ -96,7 +96,7 @@ export default {
     imageSrc(url) {
       this.imageName = url
     },
-    submitForm() {
+    async submitForm() {
       if (this.imageName.length === 0) {
         this.error = true
         return false
@@ -111,7 +111,18 @@ export default {
           translations
         }
       }
-      this.$store.dispatch('welcome/ADD_SLIDER', finalData)
+      try {
+        await this.$store.dispatch('welcome/ADD_SLIDER', finalData)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully added an item'
+        })
+      } catch (e) {
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
+      }
       this.resetLocalState()
       this.restoreEditableItem()
     },

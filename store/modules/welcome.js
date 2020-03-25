@@ -23,7 +23,7 @@ const actions = {
       commit('SET_DATA', data.data)
     } catch (e) {
       console.log(e)
-      return e.response
+      throw e.response
     }
   },
   async ADD_SLIDER({ commit, state, dispatch }, newData) {
@@ -37,11 +37,10 @@ const actions = {
       items = [...state.items, newData]
     }
     try {
-      const result = await this.$axios.post('CoverSlider', items)
+      await this.$axios.post('CoverSlider', items)
       await dispatch('GET_WELCOME_SLIDES')
-      console.log(result)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async REMOVE_SLIDER({ commit, state }, id) {
@@ -50,14 +49,14 @@ const actions = {
       await this.$axios.post('CoverSlider', filteredItems)
       commit('SET_DATA', filteredItems)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   },
   async UPDATE_SORT({ commit, dispatch }, idArray) {
     try {
       await this.$axios.post('CoverSlider/UpdateOrdering', idArray)
     } catch (e) {
-      return e.response
+      throw e.response
     }
   }
 }

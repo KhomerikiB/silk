@@ -175,8 +175,15 @@ export default {
       if (!conf) return false
       try {
         await this.$store.dispatch('apartments/DELETE_SLIDE', id)
+        this.$notify({
+          type: 'success',
+          text: 'You have successfully deleted an item'
+        })
       } catch (e) {
-        console.log(e)
+        this.$notify({
+          type: 'error',
+          text: 'Something went wrong'
+        })
       }
     },
     async submitForm() {
@@ -203,16 +210,30 @@ export default {
         data.id = this.editObject.id
         try {
           await this.$store.dispatch('apartments/UPDATE_SLIDER', data)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully updated an item'
+          })
           this.restoreStoreObject()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       } else {
         try {
           await this.$store.dispatch('apartments/ADD_SLIDER', data.body)
+          this.$notify({
+            type: 'success',
+            text: 'You have successfully added an item'
+          })
           this.resetLocalState()
         } catch (e) {
-          console.log(e)
+          this.$notify({
+            type: 'error',
+            text: 'Something went wrong'
+          })
         }
       }
     },
